@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <head>
+    <title>E- Registration form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="appScripts/tutorApp.js"></script>
+  </head>
+<body onload="init()">
+   <div class="container" >
+     <br clear="all"/>
+     <br clear="all"/>
+     <div class="panel  main-panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title"><span class="glyphicon glyphicon-education"></span> Tutor Registration Form</h3>
+        </div>
+        <div class="panel-body">
+          <div class="container-fluid">
+            <div class="panel p1  panel-info">
+               <div class="panel-heading">
+                 <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> Tutor Login Information</h3>
+               </div>
+               <div class="panel-body">
+                 <form class="logData">
+                   <table class="table">
+                         <tbody>
+                           <tr>
+                             <td class"w50 allignR">Desired username: <span class="glyphicon glyphicon-asterisk"></td>
+                             <td class"w50">
+                                 <input class="form-control input-sm" placeholder="Enter Username" id="username" type="text" onkeyup="validateUserName(this)">
+                                 <div class="alert alert-warning hidden" role="alert"></div>
+                             </td>
+                           </tr>
+                           <tr>
+                             <td class"w50 allignR">Choose password: <span class="glyphicon glyphicon-asterisk"></td>
+                             <td class"w50">
+                                 <input class="form-control input-sm" placeholder="Enter Password" id="pass" type="password" onkeyup="validatePassword(this)">
+                                 <div class="alert alert-warning hidden" role="alert"></div>
+                             </td>
+                           </tr>
+                           <tr>
+                             <td class"w50 allignR">Secret question:</td>
+                             <td class"w50">
+                               <select class="form-control" id="dropQuestion">
+                                 <option selected="true"></option>
+                                 <option>What is your favorite pet name?</option>
+                                 <option>What is your favorite crush name?</option>
+                                 <option>What is your favorite hobby?</option>
+                                 <option>What is your favorite movie?</option>
+                              </select>
+                             <div class="alert alert-warning hidden" role="alert"></div>
+                             </td>
+                           </tr>
+                           <tr>
+                             <td class"w50 allignR">Answer:</td>
+                             <td class"w50">
+                                 <input class="form-control input-sm"  id="answer" type="text">
+                                 <div class="alert alert-warning hidden" role="alert"></div>
+                             </td>
+                           </tr>
+                         </tbody>
+                  </table>
+                </form>
+               </div>
+           </div>
+           <!-- second panel -->
+           <div class="panel  p2 panel-info">
+              <div class="panel-heading">
+                <h3 class="panel-title"><span class="glyphicon glyphicon-qrcode"></span> Personal Details and Tutor Contact Information</h3>
+              </div>
+              <div class="panel-body">
+                  <form class="contactData">
+                    <table class="table">
+                          <tbody>
+                            <tr>
+                              <td class"w50 allignR">Name: <span class="glyphicon glyphicon-asterisk"></td>
+                              <td class"w50">
+                                  <input class="form-control input-sm" placeholder="Enter Name" id="name" type="text" onkeyup="validateName(this)">
+                                  <div class="alert alert-warning hidden" role="alert"></div>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td class"w50 allignR">Gender: <span class="glyphicon glyphicon-asterisk"></td>
+                              <td class"w50">
+                                <select class="form-control" id="dropGender"  onChange="validateGender(this)">
+                                  <option></option>
+                                  <option>Male</option>
+                                  <option>Female</option>
+                               </select>
+                                  <div class="alert alert-warning hidden" role="alert"></div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class"w50 allignR">Age: <span class="glyphicon glyphicon-asterisk"></td>
+                              <td class"w50">
+                                <select class="form-control" id="dropAge" onChange="validateAge(this)">
+                                  <option selected="true"></option>
+                                  <option>10</option>
+                                  <option>20</option>
+                                  <option>30</option>
+                                  <option>40</option>
+                                  <option>50</option>
+                                  <option>60</option>
+                               </select>
+                                  <div class="alert alert-warning hidden" role="alert"></div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class"w50 allignR">Country:</td>
+                              <td class"w50">
+                                  <label>India</label>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td class"w50 allignR">Location: <span class="glyphicon glyphicon-asterisk"></td>
+                              <td class"w50">
+                                <div class="dropdown">
+                                     <button class="btn btn-default dropdown-toggle" type="button" id="dropLoc" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                       Select your location
+                                       <span class="caret"></span>
+                                     </button>
+                                     <ul class="dropdown-menu" aria-labelledby="dropLoc">
+                                       <li><a href="#">Delhi</a></li>
+                                       <li><a href="#">Bengaluru</a></li>
+                                       <li><a href="#">Mumbai</a></li>
+                                       <li><a href="#">Chennai</a></li>
+                                       <li><a href="#">Pune</a></li>
+                                       <li><a href="#">Surat</a></li>
+                                     </ul>
+                               </div>
+                                  <div class="alert alert-warning hidden" role="alert"></div>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td class"w50 allignR">Postal/Zip code: <span class="glyphicon glyphicon-asterisk"></td>
+                              <td class"w50">
+                                  <input class="form-control input-sm" placeholder="Enter pincode" id="pinCode" type="text">
+                                  <div class="alert alert-warning hidden" role="alert"></div>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td class"w50 allignR">Area:</td>
+                              <td class"w50">
+                                  <input class="form-control input-sm"  id="area" type="text">
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td class"w50 allignR">Present address: <span class="glyphicon glyphicon-asterisk"></td>
+                              <td class"w50">
+                                  <textarea class="form-control" placeholder="Enter address" id="address"></textarea>
+                                  <div class="alert alert-warning hidden" role="alert"></div>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td class"w50 allignR">Contact number: <span class="glyphicon glyphicon-asterisk"></td>
+                              <td class"w50">
+                                  <input class="form-control input-sm"  placeholder="Enter contact number" id="contact" type="text">
+                                  <div class="alert alert-warning hidden" role="alert"></div>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td class"w50 allignR">Email address: <span class="glyphicon glyphicon-asterisk"></td>
+                              <td class"w50">
+                                  <input class="form-control input-sm" placeholder="Enter email" id="email" type="text">
+                                  <div class="alert alert-warning hidden" role="alert"></div>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td class"w50 allignR">Upload photo: <span class="glyphicon glyphicon-asterisk"></td>
+                              <td class"w50">
+                                  <input class="form-control input-sm"  placeholder="No file chosen" id="photo" type="file">
+                                  <div>(*.jpg,*.png,*.gif)</div>
+                                  <div class="alert alert-warning hidden" role="alert"></div>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td class"w50 allignR"></td>
+                              <td class"w50">
+                                  <button type="button" id="submit" class="btn btn-primary">Continue <span class="submit glyphicon glyphicon-paste"></span></button>
+                              </td>
+                            </tr>
+
+                          </tbody>
+                    </table>
+                 </form>
+              </div>
+        </div>
+    </div>
+  </div>
+  </div>
+ </div>
+</body>
+</html>
