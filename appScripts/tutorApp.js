@@ -73,3 +73,103 @@ function validateAge(el){
     $(el).next('.alert').text("Warning! Please select Age").removeClass('hidden');
   }
 }
+
+function validateLocation(el){
+  var locationValue = $(el).val().trim();
+  $(el).next('.alert').addClass('hidden');
+  if(locationValue=="" || locationValue.length<=0){
+    $(el).next('.alert').text("Warning! Please select Location").removeClass('hidden');
+  }
+}
+
+function validatePincode(el){
+  var pincodeValue = $(el).val().trim();
+    $(el).next('.alert').addClass('hidden');
+
+  if(!(/^[0-9]{6}$/.test(pincodeValue))){
+    $(el).next('.alert').text("Warning! Pincode should be only 6 digit number").removeClass('hidden');
+    $(el).focus();
+  }
+  if(pincodeValue.length <=0){
+    $(el).next('.alert').text("Warning! Pincode is required field").removeClass('hidden');
+    $(el).focus();
+  }
+}
+
+function validateArea(el){
+  var areaValue = $(el).val().trim();
+    $(el).next('.alert').addClass('hidden');
+
+  if( areaValue.length>0 && /[-!$%^&*()_+|~=`{}\[\]:";'<>?@#,./\\//]/.test(areaValue)){
+    $(el).next('.alert').text("Warning! Area should contain not have special characters").removeClass('hidden');
+    $(el).focus();
+  }
+}
+
+function validateAddress(el){
+  var addressValue = $(el).val().trim();
+    $(el).next('.alert').addClass('hidden');
+  if(addressValue.length<=0){
+    $(el).next('.alert').text("Warning! Address is required field").removeClass('hidden');
+    $(el).focus();
+  }
+}
+
+function validateContact(el){
+  var contactValue = $(el).val().trim();
+    $(el).next('.alert').addClass('hidden');
+
+  if(!(/^[0-9]{10}$/.test(contactValue))){
+    $(el).next('.alert').text("Warning! Contact number should be only 10 digit number without + or other characters").removeClass('hidden');
+    $(el).focus();
+  }
+  if(contactValue.length <=0){
+    $(el).next('.alert').text("Warning! Contact is required field").removeClass('hidden');
+    $(el).focus();
+  }
+}
+
+function validateEmail(el){
+  var mailValue = $(el).val().trim();
+  var valueArray = mailValue.split('@');
+
+    $(el).next('.alert').addClass('hidden');
+  if(/[-!$%^&*()_+|~=`{}\[\]:";'<>?@#,./\\//]/.test(valueArray[0])){
+    $(el).next('.alert').text("Personal Information should not contain special characters other than . or _").removeClass('hidden');
+    $(el).focus();
+    return;
+  }
+
+  if(valueArray[0]==undefined || valueArray[1]==undefined){
+    $(el).next('.alert').text("Email format is personal_info@domain, Please enter in this format").removeClass('hidden');
+    $(el).focus();
+    return;
+  }
+
+  if(valueArray[0].length >64 || valueArray[0].length <=0){
+    $(el).next('.alert').text("Warning! Personal Information should be between 1-64 characters").removeClass('hidden');
+    $(el).focus();
+    return;
+  }
+
+  if(/[-!$%^&*()_+|~=`{}\[\]:";'<>?@#,/\\//]/.test(valueArray[1])){
+    $(el).next('.alert').text("Warning! Domain name should not contain special characters other than .").removeClass('hidden');
+    $(el).focus();
+    return;
+  }
+
+  if(valueArray[1].length >253 || valueArray[1].length <= 0 ){
+    $(el).next('.alert').text("Domain name should be between  1-253 characters").removeClass('hidden');
+    $(el).focus();
+    return;
+  }
+
+  if(mailValue.length <=0){
+    $(el).next('.alert').text("Warning! Email  is required field").removeClass('hidden');
+    $(el).focus();
+  }
+}
+
+function submit(el){
+    alert("Sumit validations to be here")
+}

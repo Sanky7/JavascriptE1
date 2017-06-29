@@ -120,20 +120,15 @@
                             <tr>
                               <td class"w50 allignR">Location: <span class="glyphicon glyphicon-asterisk"></td>
                               <td class"w50">
-                                <div class="dropdown">
-                                     <button class="btn btn-default dropdown-toggle" type="button" id="dropLoc" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                       Select your location
-                                       <span class="caret"></span>
-                                     </button>
-                                     <ul class="dropdown-menu" aria-labelledby="dropLoc">
-                                       <li><a href="#">Delhi</a></li>
-                                       <li><a href="#">Bengaluru</a></li>
-                                       <li><a href="#">Mumbai</a></li>
-                                       <li><a href="#">Chennai</a></li>
-                                       <li><a href="#">Pune</a></li>
-                                       <li><a href="#">Surat</a></li>
-                                     </ul>
-                               </div>
+                                <select class="form-control" id="dropLoc" onChange="validateLocation(this)">
+                                  <option selected="true"></option>
+                                  <option>Delhi</option>
+                                  <option>Mumbai</option>
+                                  <option>Surat</option>
+                                  <option>Bengaluru</option>
+                                  <option>Chennai</option>
+                                  <option>Hyderabad</option>
+                               </select>
                                   <div class="alert alert-warning hidden" role="alert"></div>
                               </td>
                             </tr>
@@ -141,7 +136,7 @@
                             <tr>
                               <td class"w50 allignR">Postal/Zip code: <span class="glyphicon glyphicon-asterisk"></td>
                               <td class"w50">
-                                  <input class="form-control input-sm" placeholder="Enter pincode" id="pinCode" type="text">
+                                  <input class="form-control input-sm" placeholder="Enter pincode" id="pinCode" type="text" onKeyup="validatePincode(this)">
                                   <div class="alert alert-warning hidden" role="alert"></div>
                               </td>
                             </tr>
@@ -149,14 +144,14 @@
                             <tr>
                               <td class"w50 allignR">Area:</td>
                               <td class"w50">
-                                  <input class="form-control input-sm"  id="area" type="text">
+                                  <input class="form-control input-sm"  id="area" type="text" onKeyup="validateArea(this)">
                               </td>
                             </tr>
 
                             <tr>
                               <td class"w50 allignR">Present address: <span class="glyphicon glyphicon-asterisk"></td>
                               <td class"w50">
-                                  <textarea class="form-control" placeholder="Enter address" id="address"></textarea>
+                                  <textarea class="form-control" placeholder="Enter address" id="address" onKeyup="validateAddress(this)"></textarea>
                                   <div class="alert alert-warning hidden" role="alert"></div>
                               </td>
                             </tr>
@@ -164,7 +159,7 @@
                             <tr>
                               <td class"w50 allignR">Contact number: <span class="glyphicon glyphicon-asterisk"></td>
                               <td class"w50">
-                                  <input class="form-control input-sm"  placeholder="Enter contact number" id="contact" type="text">
+                                  <input class="form-control input-sm"  placeholder="Enter contact number" id="contact" type="text" onKeyup="validateContact(this)">
                                   <div class="alert alert-warning hidden" role="alert"></div>
                               </td>
                             </tr>
@@ -172,7 +167,7 @@
                             <tr>
                               <td class"w50 allignR">Email address: <span class="glyphicon glyphicon-asterisk"></td>
                               <td class"w50">
-                                  <input class="form-control input-sm" placeholder="Enter email" id="email" type="text">
+                                  <input class="form-control input-sm" placeholder="Enter email" id="email" onKeyup="validateEmail(this)" type="text">
                                   <div class="alert alert-warning hidden" role="alert"></div>
                               </td>
                             </tr>
@@ -189,7 +184,7 @@
                             <tr>
                               <td class"w50 allignR"></td>
                               <td class"w50">
-                                  <button type="button" id="submit" class="btn btn-primary">Continue <span class="submit glyphicon glyphicon-paste"></span></button>
+                                  <button type="button" id="submit" class="btn btn-primary">Continue <span class="submit glyphicon glyphicon-paste" onclick="submit(this)"></span></button>
                               </td>
                             </tr>
 
