@@ -20,12 +20,12 @@
         </div>
         <div class="panel-body">
           <div class="container-fluid">
+            <form class="contactData">
             <div class="panel p1  panel-info">
                <div class="panel-heading">
                  <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> Tutor Login Information</h3>
                </div>
                <div class="panel-body">
-                 <form class="logData">
                    <table class="table">
                          <tbody>
                            <tr>
@@ -64,7 +64,6 @@
                            </tr>
                          </tbody>
                   </table>
-                </form>
                </div>
            </div>
            <!-- second panel -->
@@ -73,7 +72,6 @@
                 <h3 class="panel-title"><span class="glyphicon glyphicon-qrcode"></span> Personal Details and Tutor Contact Information</h3>
               </div>
               <div class="panel-body">
-                  <form class="contactData">
                     <table class="table">
                           <tbody>
                             <tr>
@@ -173,10 +171,10 @@
                             </tr>
 
                             <tr>
-                              <td class"w50 allignR">Upload photo: <span class="glyphicon glyphicon-asterisk"></td>
+                              <td class"w50 allignR">Upload photo:</td>
                               <td class"w50">
-                                  <input class="form-control input-sm"  placeholder="No file chosen" id="photo" type="file">
-                                  <div>(*.jpg,*.png,*.gif)</div>
+                                  <input class="form-control input-sm"  placeholder="No file chosen" id="photo" type="file" onchange="validateFile(this)">
+                                  <p>(*.jpg,*.png,*.gif)</p>
                                   <div class="alert alert-warning hidden" role="alert"></div>
                               </td>
                             </tr>
@@ -184,15 +182,15 @@
                             <tr>
                               <td class"w50 allignR"></td>
                               <td class"w50">
-                                  <button type="button" id="submit" class="btn btn-primary">Continue <span class="submit glyphicon glyphicon-paste" onclick="submit(this)"></span></button>
+                                  <button type="button" id="submit" class="btn btn-primary" onclick="validateForm(this)">Continue <span class="submit glyphicon glyphicon-paste"></span></button>
                               </td>
                             </tr>
 
                           </tbody>
                     </table>
-                 </form>
               </div>
         </div>
+      </form>
     </div>
   </div>
   </div>

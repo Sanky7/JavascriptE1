@@ -4,34 +4,36 @@ function init(){
 
 function validateUserName(el){
   var userNameVal = $(el).val();
-    $(el).next('.alert').addClass('hidden');
+  $(el).next('.alert').addClass('hidden');
   if(userNameVal.length > 20){
     $(el).next('.alert').text("Warning! Username should not be more than 20 characters").removeClass('hidden');
       $(el).focus();
+      return;
   }
   if(/[-!$%^&*()_+|~=`{}\[\]:";'<>?@#,./\\/ /]/.test(userNameVal)){
     $(el).next('.alert').text("Warning! Username should not contain any special characters").removeClass('hidden');
     $(el).focus();
+    return;
   }
   if(userNameVal.length <=0){
     $(el).next('.alert').text("Warning! Username is required field").removeClass('hidden');
     $(el).focus();
+    return;
   }
+  $(el).next('input');
 }
 
 function validatePassword(el){
   var passValue = $(el).val();
-  var passPolicy = new RegExp("^(?=.*[a-z]){8,20}");
     $(el).next('.alert').addClass('hidden');
 
     if(passValue.length <=0){
       $(el).next('.alert').text("Warning! Password is required field").removeClass('hidden');
       $(el).focus();
     }
-  //if(/^(?=.*[a-z])^(\s)(?=.*[A-Z])(?=.*\d)(?=.*[!@#$^&*~])[A-Za-z\d!@#$^&*~]{8,20}/.test(passValue)){
- if(passPolicy.test(passValue)){  //^(\s)(?=.*[A-Z])(?=.*\d)(?=.*[!@#$^&*~])[A-Za-z\d!@#$^&*~]
+  if(!(/^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$^&*~])[a-zA-Z0-9!@#$^&*~]{8,20}$/.test(passValue))){
       $(el).next('.alert').html('');
-      $(el).next('.alert').append("<span> Password must satify below policy: </spna>")
+      $(el).next('.alert').append("<span><strong> Password must satify below policy:</strong></span>")
       $(el).next('.alert').append('<ul>');
       $(el).next('.alert').append('<li> password should have atleast 8 characters and not more than 20 characters </li>');
       $(el).next('.alert').append('<li> password should have atleast one upper case character (A-Z) </li>');
@@ -107,8 +109,8 @@ function validateArea(el){
 }
 
 function validateAddress(el){
-  var addressValue = $(el).val().trim();
-    $(el).next('.alert').addClass('hidden');
+  var addressValue = $(el).text().trim();
+  $(el).next('.alert').addClass('hidden');
   if(addressValue.length<=0){
     $(el).next('.alert').text("Warning! Address is required field").removeClass('hidden');
     $(el).focus();
@@ -170,6 +172,44 @@ function validateEmail(el){
   }
 }
 
-function submit(el){
-    alert("Sumit validations to be here")
+function validateFile(el){
+    var fileName = $(el).val().trim();
+    var valueSplit = fileName.split('.');
+    $(el).closest('td').find('div.alert').addClass('hidden');
+    if(fileName != undefined && fileName !=""){
+        var fileSize = $(el)[0].files[0].size;
+        var fileSizeinMb = fileSize / (1024 * 1024);
+        if(valueSplit[1]!="jpg" || valueSplit[1]!="png" || valueSplit[1]!="gif"){
+          $(el).closest('td').find('div.alert').text("Warning! File format should only be .jpg,.png or .gif").removeClass('hidden');
+          return;
+        }
+        if(fileSizeinMb > 2){
+          $(el).closest('td').find('div.alert').text("Warning! File size should not exceed 2MB").removeClass('hidden');
+          return;
+        }
+    }
+    return;
+}
+
+function validateForm(el){
+    validateUserName($('body').find('input#username'));
+    validatePassword($('body').find('input#pass'));
+    validateName($('body').find('input#name'));
+    validateAge($('body').find('select#dropAge'));
+    validateGender($('body').find('select#dropGender'));
+    validateLocation($('body').find('select#dropLoc'));
+    validatePincode($('body').find('input#pinCode'));
+    validateArea($('body').find('input#area'));
+    validateAddress($('body').find('input#address'));
+    validateContact($('body').find('input#contact'));
+    validateEmail($('body').find('input#email'));
+    validateFile($('body').find('input#photo'));
+
+    if($('body').find('div.alert:visible').length > 0){
+        alert("There are error's in form data, Please correct that and submit again");
+        return;
+    }
+    alert('Form submitted');
+    init();
+    return;
 }

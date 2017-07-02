@@ -1,17 +1,17 @@
-.logData> .table > tbody > tr > td.w50{
+.contactData > .panel >.panel-body > .table > tbody > tr > td.w50{
   width: 500px
 }
 .hidden{
   display: none;
 }
-.logData> .table > tbody > tr > td,.contactData> .table > tbody > tr > td{
+.contactData > .panel >.panel-body > .table > tbody > tr > td{
   border-top: none;
 }
-.logData .glyphicon,.contactData .glyphicon:not(.submit){
+.contactData .glyphicon:not(.submit){
   font-size: 12px;
   color: orange;
 }
-.contactData  select.form-control,.logData  select.form-control{
+.contactData  select.form-control{
   width: 500px;
 }
 .contactData  input#photo{
@@ -21,10 +21,9 @@
 .contactData  textarea{
   width: 650px;
 }
-.logData  input,.logData  div.alert,.contactData  input,.contactData div.alert{
+.contactData  input,.contactData div.alert{
   width: 500px;
 }
-
 div.alert{
   width: inherit;
 }
